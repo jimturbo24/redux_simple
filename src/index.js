@@ -1,7 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
+// import {createStore} from 'redux';
+import { Provider } from 'react-redux';
 import App from './App';
-import store from 'store'
+import store from './store';
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+
+// store.dispatch({ type: 'INC', payload: 'Walk the dog'})
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);

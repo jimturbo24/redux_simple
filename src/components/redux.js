@@ -39,7 +39,6 @@ import axios from 'axios';
 //   user: userReducer
 // })
 
-
 const initialState = {
   fetching: false,
   fetched: false,

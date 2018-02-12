@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getTodo } from './actions/todoActions';
 // import './components/redux'
 
-@connect((store) => {
-  return{
-    todos: store.todos
-  };
-})
-export default class App extends Component {
+class App extends Component {
+  componentWillMount() {
+    this.props.dispatch({type: 'THIS_BETTER_WORK', payload: 'Go to the store'})
+    this.props.dispatch(getTodo())
+  }
+
   render() {
     return (
       <div className="App">
-        Redux Training Is Fun
-        console.log(this.props);
+        <h2>Redux Training Is Fun</h2>
+        <span>{this.props.todo}</span>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  todo: state.todo
+});
+
+export default connect(mapStateToProps)(App)
