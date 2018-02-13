@@ -12,15 +12,17 @@ class App extends Component {
 
 
   render() {
-    if(Object.getOwnPropertyNames(this.props.todos).length > 0){
-      console.log(lastTodo);
+    console.log(Object.getOwnPropertyNames(this.props.todos).length);
+    if(Object.getOwnPropertyNames(this.props.todos).length === 201){
+      return (
+        <div className="App">
+          <h2>Redux Training Is Fun</h2>
+          <span>{this.props.todos[2].title}</span>
+        </div>
+      );
     }
-    var lastTodo = this.props.todos.pop()
-    return (
-      <div className="App">
-        <h2>Redux Training Is Fun</h2>
-        <span></span>
-      </div>
+    return(
+      <div>Loading...</div>
     );
   }
 }
