@@ -18,6 +18,10 @@ export default function reducer(state={
         fetched: true,
         todos: action.payload}
     }
+    case 'DELETE': {
+      var stateClone = Object.assign({}, state)
+      return { ...state, stateClone }
+    }
     default:
       return state;
   }

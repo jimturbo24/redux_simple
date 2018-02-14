@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTodos } from './actions/todoActions';
-// import './components/redux'
+import TodoList from './components/todo_list'
+import './App.css'
 
 class App extends Component {
   componentWillMount() {
-    // this.props.dispatch({type: 'THIS_BETTER_WORK', payload: 'Go to the store'})
-    // this.props.dispatch(getTodo())
     this.props.dispatch(getTodos())
   }
 
-
   render() {
     console.log(Object.getOwnPropertyNames(this.props.todos).length);
-    if(Object.getOwnPropertyNames(this.props.todos).length === 201){
-      return (
-        <div className="App">
-          <h2>Redux Training Is Fun</h2>
-          <span>{this.props.todos[2].title}</span>
-        </div>
-      );
-    }
+    console.log(this.props.todos);
+
     return(
-      <div>Loading...</div>
+      <div className="App">
+        <h2>Redux Training Is Fun</h2>
+
+        <TodoList
+          todos={this.props.todos}
+          handleDelete={this.doDelete.bind(this)}/>
+      </div>
     );
   }
+
+  doDelete(id) {
+    this.props.dispatch({ type: "DELETE", todoId: id })
+  }
+
 }
 
 const mapStateToProps = state => ({
